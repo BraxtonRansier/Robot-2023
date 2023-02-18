@@ -66,5 +66,8 @@ public class HorizontalElevator extends SubsystemBase {
     SmartDashboard.putNumber("Horizontal Encoder", getEncoderValue());
     
   }
+  public void zeroEncoders(){
+    horizontal_elevator_motor.setSelectedSensorPosition(0.0);
+  }
 }
 

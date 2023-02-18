@@ -101,16 +101,16 @@ public class RobotContainer {
         dr_yButton.onFalse(new HumanPlayerConeIntake(verticalElevator, horizontalElevator, intake, 0.05, 0.05, 0.05));    
  
         /* Operator Buttons */
-        op_Back.onTrue(new BringElevatorToZero(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_Start.onTrue(new ZeroAllEncoders(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_aButton.onTrue(new FoldInIntake(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_aButton.onFalse(new FoldInIntake(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_bButton.onTrue(new LineRobotWithAprilTag(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_bButton.onFalse(new LineRobotWithAprilTag(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_RightBumper.onTrue(new DropFork(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_RightBumper.onTrue(new DropFork(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_LeftBumper.onTrue(new PidOnEngage(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
-        op_LeftBumper.onTrue(new PidOnEngage(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+      //   op_Back.onTrue(new BringElevatorToZero(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+      //   op_Start.onTrue(new ZeroAllEncoders(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+        op_aButton.onTrue(new FoldInIntake(verticalElevator, wrist, 0.5, -0.8));
+        op_aButton.onFalse(new FoldInIntake(verticalElevator, wrist, 0.0, 0.0));
+      //   op_bButton.onTrue(new LineRobotWithAprilTag(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+      //   op_bButton.onFalse(new LineRobotWithAprilTag(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+      //   op_RightBumper.onTrue(new DropFork(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+      //   op_RightBumper.onTrue(new DropFork(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+      //   op_LeftBumper.onTrue(new PidOnEngage(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
+      //   op_LeftBumper.onTrue(new PidOnEngage(verticalElevator, horizontalElevator, intake, translationAxis, strafeAxis, rotationAxis));
 
     }
 
@@ -160,6 +160,13 @@ public class RobotContainer {
         intake.intake_on(0.0);
      }
 
+     // Make Encoders Zero
+     if (operator.getStartButtonPressed()){
+        verticalElevator.zeroEncoders();
+        horizontalElevator.zeroEncoders();
+        wrist.zeroEncoders();
+
+     }
     }
     /**
      * Use this to pass the autonomous command to the main {@link Robot} class.

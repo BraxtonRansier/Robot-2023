@@ -60,4 +60,7 @@ public class Wrist extends SubsystemBase {
     double power = this.getPidPower();
     this.Vertical_Elevator_On(power);
   }
+  public void zeroEncoders(){
+    wrist.setSelectedSensorPosition(0.0);
+  }
 }

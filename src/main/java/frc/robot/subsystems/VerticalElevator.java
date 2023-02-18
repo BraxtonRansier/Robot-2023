@@ -13,6 +13,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.commands.ZeroAllEncoders;
 
 public class VerticalElevator extends SubsystemBase {
   /** Creates a new VerticalElevator. */
@@ -26,6 +27,9 @@ public class VerticalElevator extends SubsystemBase {
   private static final int BOTTOM_ENCODER_VALUE = 0 + ENCODER_BUFFER;
   private static final int TOP_ENCODER_VALUE = 90000 - ENCODER_BUFFER;
   private static final double MAX_POWER = 0.6;
+  private static final int zero = 0; 
+  // system.swerveWork;
+
 
   public VerticalElevator(){
     this.pid.setTolerance(0.2, 0.05/20);
@@ -72,5 +76,9 @@ public class VerticalElevator extends SubsystemBase {
   public void driveTowardsPid() {
     double power = this.getPidPower();
     this.Vertical_Elevator_On(power);
+  }
+
+  public void zeroEncoders(){
+    vertical_elevator_motor.setSelectedSensorPosition(0.0);
   }
 }
